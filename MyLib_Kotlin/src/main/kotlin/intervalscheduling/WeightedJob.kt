@@ -9,9 +9,7 @@ fun Array<WeightedJob>.findMaxSumWeightJobsWithoutOverlap(): List<WeightedJob> {
     jobs.sortBy { it.finish }
 
     val pArray = jobs.mapIndexed { i, _ -> jobs.p(i) }
-
     val dp = DoubleArray(jobs.size)
-    dp[0] = 0.0
 
     val backtracking = BooleanArray(jobs.size)
     for (i in 1 until jobs.size) {
