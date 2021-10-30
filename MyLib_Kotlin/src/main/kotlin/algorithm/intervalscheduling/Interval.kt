@@ -1,4 +1,4 @@
-package intervalscheduling
+package algorithm.intervalscheduling
 
 open class Interval(open val start: Double, open val finish: Double)
 

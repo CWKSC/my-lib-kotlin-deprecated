@@ -1,4 +1,4 @@
-package intervalscheduling
+package algorithm.intervalscheduling
 
 data class WeightedJob(override val start: Double, override val finish: Double, val weight: Double) :
     Interval(start, finish)
