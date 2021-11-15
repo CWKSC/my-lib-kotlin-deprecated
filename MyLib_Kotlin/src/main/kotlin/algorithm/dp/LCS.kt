@@ -1,8 +1,7 @@
 package algorithm.dp
 
 
-class LCS {
-
+sealed class LCS {
 
     companion object {
 
