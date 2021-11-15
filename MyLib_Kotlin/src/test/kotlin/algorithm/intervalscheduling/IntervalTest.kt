@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 internal class IntervalTest {
 
     @Test
-    fun test_p_function(){
+    fun test_p_function() {
         val intervals = arrayOf(
             Interval(0.0, 3.0),
             Interval(1.0, 4.0),
@@ -18,7 +18,7 @@ internal class IntervalTest {
             Interval(8.0, 10.0),
         )
         val results = intervals.indices.map { intervals.p(it) }
-        assertEquals(results, listOf(-1, -1, -1, 0, 1, 0, 2, 4))
+        assertEquals(listOf(-1, -1, -1, 0, 1, 0, 2, 4), results)
     }
 
 
