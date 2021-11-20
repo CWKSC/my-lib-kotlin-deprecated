@@ -33,15 +33,31 @@ internal class KMPTest {
     inner class SearchTest {
 
         @Test
-        fun search() {
+        fun repeat_A() {
             assertArrayEquals(
-                intArrayOf(2, 9),
-                KMP.search("abababcabababcc", "ababc")
+                intArrayOf(0, 1, 2, 3, 4),
+                KMP.search("AAAAA", "A")
             )
         }
 
         @Test
-        fun search2() {
+        fun repeat_ABA() {
+            assertArrayEquals(
+                intArrayOf(0, 2, 4, 6),
+                KMP.search("ABABABABA", "ABA")
+            )
+        }
+
+        @Test
+        fun ABABABCABABABCC_ABABC() {
+            assertArrayEquals(
+                intArrayOf(2, 9),
+                KMP.search("ABABABCABABABCC", "ABABC")
+            )
+        }
+
+        @Test
+        fun BBCABCDABABCDABCDABDE_ABCDABD() {
             assertArrayEquals(
                 intArrayOf(13),
                 KMP.search("BBCABCDABABCDABCDABDE", "ABCDABD")
@@ -49,7 +65,7 @@ internal class KMPTest {
         }
 
         @Test
-        fun search3() {
+        fun ABC_ABC() {
             assertArrayEquals(
                 intArrayOf(0),
                 KMP.search("ABC", "ABC")
@@ -57,7 +73,7 @@ internal class KMPTest {
         }
 
         @Test
-        fun search4() {
+        fun AABBAABB_AABB() {
             assertArrayEquals(
                 intArrayOf(0, 4),
                 KMP.search("AABBAABB", "AABB")

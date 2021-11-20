@@ -30,7 +30,7 @@ sealed class KMP {
                     j++
                     if (j == m) {
                         result.add(i - m)
-                        j = 0
+                        j = failArray[j - 1]
                     }
                 } else if (j > 0) {
                     j = failArray[j - 1]
