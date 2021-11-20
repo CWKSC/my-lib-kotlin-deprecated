@@ -3,6 +3,7 @@ package algorithm.stringsearch
 sealed class KMP {
 
     companion object {
+
         fun getFailureArray(pattern: String): IntArray {
             val n = pattern.length
             val failure = IntArray(n)
@@ -16,6 +17,30 @@ sealed class KMP {
             }
             return failure
         }
+
+        fun search(target: String, pattern: String, failArray: IntArray): IntArray {
+            val n = target.length
+            val m = pattern.length
+            var i = 0
+            var j = 0
+            val result = mutableListOf<Int>()
+            while (i < n) {
+                if (target[i] == pattern[j]) {
+                    i++
+                    j++
+                    if (j == m) {
+                        result.add(i - m)
+                        j = 0
+                    }
+                } else if (j > 0) {
+                    j -= failArray[j - 1]
+                } else {
+                    i++
+                }
+            }
+            return result.toIntArray()
+        }
+
     }
 
 
