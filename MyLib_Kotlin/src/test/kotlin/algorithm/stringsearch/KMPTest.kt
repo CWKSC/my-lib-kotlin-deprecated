@@ -12,18 +12,18 @@ internal class KMPTest {
     inner class GetFailureArrayTest {
 
         @Test
-        fun getFailureArray() {
+        fun ABABBBABABA() {
             assertArrayEquals(
                 intArrayOf(0, 0, 1, 2, 0, 0, 1, 2, 3, 4, 3),
-                getFailureArray("ababbbababa")
+                getFailureArray("ABABBBABABA")
             )
         }
 
         @Test
-        fun getFailureArray2() {
+        fun ABABC() {
             assertArrayEquals(
                 intArrayOf(0, 0, 1, 2, 0),
-                getFailureArray("ababc")
+                getFailureArray("ABABC")
             )
         }
 
