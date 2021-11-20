@@ -24,7 +24,7 @@ sealed class KMP {
             var i = 0
             var j = 0
             val result = mutableListOf<Int>()
-            while (i < n) {
+            while (n - i >= m - j) {
                 if (target[i] == pattern[j]) {
                     i++
                     j++
@@ -33,12 +33,17 @@ sealed class KMP {
                         j = 0
                     }
                 } else if (j > 0) {
-                    j -= failArray[j - 1]
+                    j = failArray[j - 1]
                 } else {
                     i++
                 }
             }
             return result.toIntArray()
+        }
+
+        fun search(target: String, pattern: String): IntArray {
+            val failArray = getFailureArray(pattern)
+            return search(target, pattern, failArray)
         }
 
     }
