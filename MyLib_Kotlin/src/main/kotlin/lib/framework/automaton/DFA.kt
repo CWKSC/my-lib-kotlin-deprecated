@@ -1,4 +1,4 @@
-package automaton
+package lib.framework.automaton
 
 data class DFA<State, Input>(
     val initState: State,

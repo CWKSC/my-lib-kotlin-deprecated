@@ -1,18 +1,19 @@
-package automaton
+package algorithm.framework.automaton
 
+import lib.framework.automaton.DFA
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 internal class DFATest {
 
     enum class InputType {
-        text, `@`, dot, Unknowns
+        Text, At, Dot, Unknowns
     }
 
     private fun charToInputType(c: Char): InputType = when (c) {
-        in 'a'..'z', in 'A'..'Z', in '0'..'9', '_', '-' -> InputType.text
-        '@' -> InputType.`@`
-        '.' -> InputType.dot
+        in 'a'..'z', in 'A'..'Z', in '0'..'9', '_', '-' -> InputType.Text
+        '@' -> InputType.At
+        '.' -> InputType.Dot
         else -> InputType.Unknowns
     }
 
@@ -21,20 +22,20 @@ internal class DFATest {
 
         val dfa = DFA.create(
             "s1",
-            "s1" to arrayOf(InputType.text to "s2"),
+            "s1" to arrayOf(InputType.Text to "s2"),
             "s2" to arrayOf(
-                InputType.text to "s2",
-                InputType.`@` to "s3"
+                InputType.Text to "s2",
+                InputType.At to "s3"
             ),
-            "s3" to arrayOf(InputType.text to "s4"),
+            "s3" to arrayOf(InputType.Text to "s4"),
             "s4" to arrayOf(
-                InputType.text to "s4",
-                InputType.dot to "s5"
+                InputType.Text to "s4",
+                InputType.Dot to "s5"
             ),
-            "s5" to arrayOf(InputType.text to "sF"),
+            "s5" to arrayOf(InputType.Text to "sF"),
             "sF" to arrayOf(
-                InputType.text to "sF",
-                InputType.dot to "s5"
+                InputType.Text to "sF",
+                InputType.Dot to "s5"
             )
         )
 
