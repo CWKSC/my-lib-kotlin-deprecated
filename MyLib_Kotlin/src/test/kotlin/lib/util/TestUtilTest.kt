@@ -1,12 +1,12 @@
-package helper.testhelper
+package lib.util
 
-import helper.testhelper.TestHelper.Companion.recordSystemOut
-import helper.testhelper.TestHelper.Companion.streamToSystemIn
+import lib.util.TestUtil.recordSystemOut
+import lib.util.TestUtil.streamToSystemIn
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
 
-internal class TestHelperTest {
+internal class TestUtilTest {
 
     @Test
     fun stream_input_into_system_in() {
@@ -17,7 +17,7 @@ internal class TestHelperTest {
     }
 
     @Test
-    fun record_ouput_from_system_out() {
+    fun record_output_from_system_out() {
         val output = recordSystemOut {
             print("Hello World")
         }
