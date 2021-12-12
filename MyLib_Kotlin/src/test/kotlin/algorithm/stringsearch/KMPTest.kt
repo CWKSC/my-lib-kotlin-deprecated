@@ -12,7 +12,7 @@ internal class KMPTest {
     inner class GetFailureArrayTest {
 
         @Test
-        fun failureArray_ABABBBABABA() {
+        fun ABABBBABABA() {
             assertArrayEquals(
                 intArrayOf(0, 0, 1, 2, 0, 0, 1, 2, 3, 4, 3),
                 getFailureArray("ABABBBABABA")
@@ -20,7 +20,7 @@ internal class KMPTest {
         }
 
         @Test
-        fun failureArray_ABABC() {
+        fun ABABC() {
             assertArrayEquals(
                 intArrayOf(0, 0, 1, 2, 0),
                 getFailureArray("ABABC")
@@ -49,7 +49,7 @@ internal class KMPTest {
         }
 
         @Test
-        fun kmp_ABABABCABABABCC_ABABC() {
+        fun ABABABCABABABCC_ABABC() {
             assertArrayEquals(
                 intArrayOf(2, 9),
                 KMP.search("ABABABCABABABCC", "ABABC")
@@ -57,7 +57,7 @@ internal class KMPTest {
         }
 
         @Test
-        fun kmp_BBCABCDABABCDABCDABDE_ABCDABD() {
+        fun BBCABCDABABCDABCDABDE_ABCDABD() {
             assertArrayEquals(
                 intArrayOf(13),
                 KMP.search("BBCABCDABABCDABCDABDE", "ABCDABD")
@@ -65,7 +65,7 @@ internal class KMPTest {
         }
 
         @Test
-        fun kmp_ABC_ABC() {
+        fun ABC_ABC() {
             assertArrayEquals(
                 intArrayOf(0),
                 KMP.search("ABC", "ABC")
@@ -73,7 +73,7 @@ internal class KMPTest {
         }
 
         @Test
-        fun kmp_AABBAABB_AABB() {
+        fun AABBAABB_AABB() {
             assertArrayEquals(
                 intArrayOf(0, 4),
                 KMP.search("AABBAABB", "AABB")

@@ -10,7 +10,7 @@ sealed class LCS {
         }
 
         fun recursionTopDown(A: String, B: String): String {
-            if (A.isEmpty() || B.isEmpty()) return ""
+            if (A.isEmpty() || B.isEmpty()) return "";
             val aLast = A.last()
             val bLast = B.last()
             val subA = A.dropLast(1)
@@ -44,7 +44,7 @@ sealed class LCS {
 
 
         fun recursionTopDownIndex(A: String, B: String, indexA: Int, indexB: Int): String {
-            if (indexA < 0 || indexB < 0) return ""
+            if (indexA < 0 || indexB < 0) return "";
             val a = A[indexA]
             val b = B[indexB]
             return if (a == b) {
@@ -67,13 +67,13 @@ sealed class LCS {
                 for (col in 0 until bLength) {
                     if (A[row] == B[col]) {
                         dp[row + 1][col + 1] = dp[row][col] + 1
-                        direction[row + 1][col + 1] = '\\'
+                        direction[row + 1][col + 1] = '\\';
                     } else if (dp[row][col + 1] >= dp[row + 1][col]) {
                         dp[row + 1][col + 1] = dp[row][col + 1]
-                        direction[row + 1][col + 1] = '^'
+                        direction[row + 1][col + 1] = '^';
                     } else {
                         dp[row + 1][col + 1] = dp[row + 1][col]
-                        direction[row + 1][col + 1] = '<'
+                        direction[row + 1][col + 1] = '<';
                     }
                 }
             }
@@ -96,13 +96,13 @@ sealed class LCS {
             val aLength = dp.size
             val bLength = dp[0].size
 
-            var lcs = ""
+            var LCS = ""
             var row: Int = aLength
             var col: Int = bLength
             while (direction[row][col] != ' ') {
                 when (direction[row][col]) {
                     '\\' -> {
-                        lcs += A[row - 1]
+                        LCS += A.get(row - 1)
                         row -= 1
                         col -= 1
                     }
@@ -110,7 +110,7 @@ sealed class LCS {
                     '^' -> row -= 1
                 }
             }
-            return lcs
+            return LCS
         }
 
 
