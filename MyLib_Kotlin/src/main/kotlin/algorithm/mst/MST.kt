@@ -24,7 +24,7 @@ object MST {
         val start = _start ?: graph.keys.random()
         val mst = UndirectedGraph<Node, Weight>()
         val visited = mutableSetOf(start)
-        val edgeList = getEdgeFrom(start).toMutableList()
+        val edgeList = getEdgeFrom(start).filter { it.nodeB != start }.toMutableList()
         while (visited.size != graph.size) {
             edgeList.sortBy { it.weight }
             val minEdge = edgeList.removeFirst()

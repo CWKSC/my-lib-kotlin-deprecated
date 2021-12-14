@@ -17,9 +17,7 @@ class UndirectedGraphEdge<Node, Weight>(val nodeA: Node, val nodeB: Node, val we
     }
 
     override fun hashCode(): Int {
-        var result = nodeA.hashCode() * nodeB.hashCode()
-        result = 31 * result + weight.hashCode()
-        return result
+        return nodeA.hashCode() + nodeB.hashCode()
     }
 
     override fun toString(): String {

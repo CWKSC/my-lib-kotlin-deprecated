@@ -41,7 +41,7 @@ internal class MSTTest {
     }
 
     @RepeatedTest(30)
-    fun test_undirectedGraph1_prim_random_start_point(){
+    fun test_undirectedGraph1_prim_random_start_point() {
         assertEquals(27, undirectedGraph1.prim().getTotalWeight())
     }
 
@@ -81,9 +81,57 @@ internal class MSTTest {
     }
 
     @RepeatedTest(30)
-    fun test_undirectedGraph2_prim_random_start_point(){
+    fun test_undirectedGraph2_prim_random_start_point() {
         assertEquals(37, undirectedGraph2.prim().getTotalWeight())
     }
 
+
+
+    // Have cycle
+    private val undirectedGraph_cycle = UndirectedGraph<Int, Int>()
+
+    init {
+        undirectedGraph_cycle.addEdge(0, 0, 8)
+        undirectedGraph_cycle.addEdge(0, 1, 5)
+        undirectedGraph_cycle.addEdge(0, 2, 5)
+        undirectedGraph_cycle.addEdge(1, 0, 5)
+        undirectedGraph_cycle.addEdge(1, 1, 11)
+        undirectedGraph_cycle.addEdge(1, 2, 5)
+        undirectedGraph_cycle.addEdge(2, 0, 5)
+        undirectedGraph_cycle.addEdge(2, 1, 5)
+        undirectedGraph_cycle.addEdge(2, 2, 25)
+    }
+
+    @Test
+    fun test_undirectedGraph_cycle_kruskal() {
+        assertEquals(10, undirectedGraph_cycle.kruskal().getTotalWeight())
+    }
+
+    @Test
+    fun test_undirectedGraph_cycle_prim() {
+        val minWeights = undirectedGraph_cycle.getAllNode().map {
+            val mst = undirectedGraph_cycle.prim(it)
+            val weight = mst.getTotalWeight()
+            weight
+        }
+        assertEquals(List(undirectedGraph_cycle.size()) { 10 }, minWeights)
+    }
+
+
+    @RepeatedTest(1000)
+    fun random_node_edge() {
+        val randomGraph = UndirectedGraph<Int, Int>()
+        val getRandomNode = { (0..3).random() }
+        val getRandomWeight = { (1..30).random() }
+        randomGraph.addEdge(getRandomNode(), getRandomNode(), getRandomWeight())
+        repeat(30) {
+            val from = randomGraph.getAllNode().random()
+            val to = getRandomNode()
+            val weight = getRandomWeight()
+            randomGraph.addEdge(from, to, weight)
+        }
+        println(randomGraph)
+        assertEquals(randomGraph.kruskal().getTotalWeight(), randomGraph.prim().getTotalWeight())
+    }
 
 }
