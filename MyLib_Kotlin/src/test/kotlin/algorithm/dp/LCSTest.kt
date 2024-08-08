@@ -7,33 +7,33 @@ internal class LCSTest {
 
     @Test
     fun recursionTopDown() {
-        val A = "ABCABCBA"
-        val B = "CBABCABCC"
-        val LCS = LCS.recursionTopDown(A, B)
-        assertEquals("ABCABC", LCS)
+        val a = "ABCABCBA"
+        val b = "CBABCABCC"
+        val lcs = LCS.recursionTopDown(a, b)
+        assertEquals("ABCABC", lcs)
     }
 
     @Test
     fun recursionBottomUp() {
-        val A = "ABCABCBA"
-        val B = "CBABCABCC"
-        val LCS = LCS.recursionBottomUp("", A, B)
-        assertEquals("CBACBA", LCS)
+        val a = "ABCABCBA"
+        val b = "CBABCABCC"
+        val lcs = LCS.recursionBottomUp("", a, b)
+        assertEquals("CBACBA", lcs)
     }
 
     @Test
     fun recursionTopDownIndex() {
-        val A = "ABCABCBA"
-        val B = "CBABCABCC"
-        val LCS = LCS.recursionTopDownIndex(A, B, A.length - 1, B.length - 1)
-        assertEquals("ABCABC", LCS)
+        val a = "ABCABCBA"
+        val b = "CBABCABCC"
+        val lcs = LCS.recursionTopDownIndex(a, b, a.length - 1, b.length - 1)
+        assertEquals("ABCABC", lcs)
     }
 
     @Test
-    fun dp(){
-        val A = "ABCABCBA"
-        val B = "CBABCABCC"
-        val dp = LCS.dp(A, B)
+    fun dp() {
+        val a = "ABCABCBA"
+        val b = "CBABCABCC"
+        val dp = LCS.dp(a, b)
         assertEquals(6, dp.last().last())
     }
 

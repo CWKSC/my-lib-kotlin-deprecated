@@ -38,5 +38,20 @@ class UndirectedGraph<Node, Weight> : Graph<Node, Weight>() {
 
     fun size(): Int = graph.size
 
+    override fun toString(): String {
+        val sb = StringBuilder()
+        graph.forEach { edgeMap ->
+            val from = edgeMap.key
+            sb.append("$from ->\n")
+            edgeMap.value.forEach { edge ->
+                val to = edge.key
+                val value = edge.value
+                sb.append(String.format("\t%-2s : $value\n", to))
+            }
+        }
+        return sb.toString()
+    }
+
+
 }
 
